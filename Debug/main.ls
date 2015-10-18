@@ -118,150 +118,147 @@
 4701                     ; 80 		delayus(10);
 4703  0096 ae000a        	ldw	x,#10
 4704  0099 adb2          	call	_delayus
-4706                     ; 83 		mask = 0x10; 
-4708  009b a610          	ld	a,#16
-4709  009d 6b03          	ld	(OFST+0,sp),a
-4710                     ; 84 		for(j=0;j<5;j++)  
-4712  009f 0f02          	clr	(OFST-1,sp)
-4713  00a1               L7213:
-4714                     ; 86 			if(mask&Rdt)  
-4716  00a1 7b03          	ld	a,(OFST+0,sp)
-4717  00a3 1504          	bcp	a,(OFST+1,sp)
-4718  00a5 2706          	jreq	L5313
-4719                     ; 87 				SDO = 1;   
-4721  00a7 7214500f      	bset	_OPD2
-4723  00ab 2004          	jra	L7313
-4724  00ad               L5313:
-4725                     ; 89 				SDO = 0;  
-4727  00ad 7215500f      	bres	_OPD2
-4728  00b1               L7313:
-4729                     ; 90 			delayus(10);			
-4731  00b1 ae000a        	ldw	x,#10
-4732  00b4 ad97          	call	_delayus
-4734                     ; 91 			SCLK=1;
-4736  00b6 7212500f      	bset	_OPD1
-4737                     ; 92 			delayus(10);
-4739  00ba ae000a        	ldw	x,#10
-4740  00bd ad8e          	call	_delayus
-4742                     ; 93 			SCLK=0;  
-4744  00bf 7213500f      	bres	_OPD1
-4745                     ; 94 			delayus(10);
-4747  00c3 ae000a        	ldw	x,#10
-4748  00c6 ad85          	call	_delayus
-4750                     ; 95 			mask>>=1;  
-4752  00c8 0403          	srl	(OFST+0,sp)
-4753                     ; 84 		for(j=0;j<5;j++)  
-4755  00ca 0c02          	inc	(OFST-1,sp)
-4758  00cc 7b02          	ld	a,(OFST-1,sp)
-4759  00ce a105          	cp	a,#5
-4760  00d0 25cf          	jrult	L7213
-4761                     ; 98 		mask = 0x10; 
-4763  00d2 a610          	ld	a,#16
-4764  00d4 6b03          	ld	(OFST+0,sp),a
-4765                     ; 99 		for(j=0;j<5;j++)  
-4767  00d6 0f02          	clr	(OFST-1,sp)
-4768  00d8               L1413:
-4769                     ; 101 			if(mask&Rdt)  
-4771  00d8 7b03          	ld	a,(OFST+0,sp)
-4772  00da 1504          	bcp	a,(OFST+1,sp)
-4773  00dc 2706          	jreq	L7413
-4774                     ; 102 				SDO = 1;   
-4776  00de 7214500f      	bset	_OPD2
-4778  00e2 2004          	jra	L1513
-4779  00e4               L7413:
-4780                     ; 104 				SDO = 0;  
-4782  00e4 7215500f      	bres	_OPD2
-4783  00e8               L1513:
-4784                     ; 105 			delayus(10);			
-4786  00e8 ae000a        	ldw	x,#10
-4787  00eb cd004d        	call	_delayus
-4789                     ; 106 			SCLK=1;
-4791  00ee 7212500f      	bset	_OPD1
-4792                     ; 107 			delayus(10);
-4794  00f2 ae000a        	ldw	x,#10
-4795  00f5 cd004d        	call	_delayus
-4797                     ; 108 			SCLK=0;  
-4799  00f8 7213500f      	bres	_OPD1
-4800                     ; 109 			delayus(10);
-4802  00fc ae000a        	ldw	x,#10
-4803  00ff cd004d        	call	_delayus
-4805                     ; 110 			mask>>=1;  
-4807  0102 0403          	srl	(OFST+0,sp)
-4808                     ; 99 		for(j=0;j<5;j++)  
-4810  0104 0c02          	inc	(OFST-1,sp)
-4813  0106 7b02          	ld	a,(OFST-1,sp)
-4814  0108 a105          	cp	a,#5
-4815  010a 25cc          	jrult	L1413
-4816                     ; 113 		mask = 0x10; 
-4818  010c a610          	ld	a,#16
-4819  010e 6b03          	ld	(OFST+0,sp),a
-4820                     ; 114 		for(j=0;j<5;j++)  
-4822  0110 0f02          	clr	(OFST-1,sp)
-4823  0112               L3513:
-4824                     ; 116 			if(mask&Rdt)  
-4826  0112 7b03          	ld	a,(OFST+0,sp)
-4827  0114 1504          	bcp	a,(OFST+1,sp)
-4828  0116 2706          	jreq	L1613
-4829                     ; 117 				SDO = 1;   
-4831  0118 7214500f      	bset	_OPD2
-4833  011c 2004          	jra	L3613
-4834  011e               L1613:
-4835                     ; 119 				SDO = 0;  
-4837  011e 7215500f      	bres	_OPD2
-4838  0122               L3613:
-4839                     ; 120 			delayus(10);			
-4841  0122 ae000a        	ldw	x,#10
-4842  0125 cd004d        	call	_delayus
-4844                     ; 121 			SCLK=1;
-4846  0128 7212500f      	bset	_OPD1
-4847                     ; 122 			delayus(10);
-4849  012c ae000a        	ldw	x,#10
-4850  012f cd004d        	call	_delayus
-4852                     ; 123 			SCLK=0;  
-4854  0132 7213500f      	bres	_OPD1
-4855                     ; 124 			delayus(10);
-4857  0136 ae000a        	ldw	x,#10
-4858  0139 cd004d        	call	_delayus
-4860                     ; 125 			mask>>=1;  
-4862  013c 0403          	srl	(OFST+0,sp)
-4863                     ; 114 		for(j=0;j<5;j++)  
-4865  013e 0c02          	inc	(OFST-1,sp)
-4868  0140 7b02          	ld	a,(OFST-1,sp)
-4869  0142 a105          	cp	a,#5
-4870  0144 25cc          	jrult	L3513
-4871                     ; 74 	for(i = 0;i < 1; i++)	
-4873  0146 0c01          	inc	(OFST-2,sp)
-4876  0148 0d01          	tnz	(OFST-2,sp)
-4877  014a 2603          	jrne	L41
-4878  014c cc0085        	jp	L1213
-4879  014f               L41:
-4880                     ; 128 	SDO=0; 
-4882  014f 7215500f      	bres	_OPD2
-4883                     ; 133 	for(i = 0;i < 1; i++)
-4885  0153 0f01          	clr	(OFST-2,sp)
-4886  0155               L5613:
-4887                     ; 135 		SCLK = 1;
-4889  0155 7212500f      	bset	_OPD1
-4890                     ; 136 		delayus(10);
-4892  0159 ae000a        	ldw	x,#10
-4893  015c cd004d        	call	_delayus
-4895                     ; 137 		SCLK = 0;
-4897  015f 7213500f      	bres	_OPD1
-4898                     ; 138 		delayus(10);
-4900  0163 ae000a        	ldw	x,#10
-4901  0166 cd004d        	call	_delayus
-4903                     ; 133 	for(i = 0;i < 1; i++)
-4905  0169 0c01          	inc	(OFST-2,sp)
-4908  016b 0d01          	tnz	(OFST-2,sp)
-4909  016d 27e6          	jreq	L5613
-4910                     ; 140 	delayms(500);
-4912  016f ae01f4        	ldw	x,#500
-4913  0172 cd0026        	call	_delayms
-4915                     ; 142 }
-4918  0175 5b05          	addw	sp,#5
-4919  0177 81            	ret
-4932                     	xdef	_delayms
-4933                     	xdef	_main
-4934                     	xdef	_delayus
-4935                     	xdef	_LED_SendData
-4954                     	end
+4706                     ; 83 		mask = 0x00; 
+4708  009b 0f03          	clr	(OFST+0,sp)
+4709                     ; 84 		for(j=0;j<5;j++)  
+4711  009d 0f02          	clr	(OFST-1,sp)
+4712  009f               L7213:
+4713                     ; 86 			if(mask&Rdt)  
+4715  009f 7b03          	ld	a,(OFST+0,sp)
+4716  00a1 1504          	bcp	a,(OFST+1,sp)
+4717  00a3 2706          	jreq	L5313
+4718                     ; 87 				SDO = 1;   
+4720  00a5 7214500f      	bset	_OPD2
+4722  00a9 2004          	jra	L7313
+4723  00ab               L5313:
+4724                     ; 89 				SDO = 0;  
+4726  00ab 7215500f      	bres	_OPD2
+4727  00af               L7313:
+4728                     ; 90 			delayus(10);			
+4730  00af ae000a        	ldw	x,#10
+4731  00b2 ad99          	call	_delayus
+4733                     ; 91 			SCLK=1;
+4735  00b4 7212500f      	bset	_OPD1
+4736                     ; 92 			delayus(10);
+4738  00b8 ae000a        	ldw	x,#10
+4739  00bb ad90          	call	_delayus
+4741                     ; 93 			SCLK=0;  
+4743  00bd 7213500f      	bres	_OPD1
+4744                     ; 94 			delayus(10);
+4746  00c1 ae000a        	ldw	x,#10
+4747  00c4 ad87          	call	_delayus
+4749                     ; 95 			mask>>=1;  
+4751  00c6 0403          	srl	(OFST+0,sp)
+4752                     ; 84 		for(j=0;j<5;j++)  
+4754  00c8 0c02          	inc	(OFST-1,sp)
+4757  00ca 7b02          	ld	a,(OFST-1,sp)
+4758  00cc a105          	cp	a,#5
+4759  00ce 25cf          	jrult	L7213
+4760                     ; 98 		mask = 0x00; 
+4762  00d0 0f03          	clr	(OFST+0,sp)
+4763                     ; 99 		for(j=0;j<5;j++)  
+4765  00d2 0f02          	clr	(OFST-1,sp)
+4766  00d4               L1413:
+4767                     ; 101 			if(mask&Rdt)  
+4769  00d4 7b03          	ld	a,(OFST+0,sp)
+4770  00d6 1504          	bcp	a,(OFST+1,sp)
+4771  00d8 2706          	jreq	L7413
+4772                     ; 102 				SDO = 1;   
+4774  00da 7214500f      	bset	_OPD2
+4776  00de 2004          	jra	L1513
+4777  00e0               L7413:
+4778                     ; 104 				SDO = 0;  
+4780  00e0 7215500f      	bres	_OPD2
+4781  00e4               L1513:
+4782                     ; 105 			delayus(10);			
+4784  00e4 ae000a        	ldw	x,#10
+4785  00e7 cd004d        	call	_delayus
+4787                     ; 106 			SCLK=1;
+4789  00ea 7212500f      	bset	_OPD1
+4790                     ; 107 			delayus(10);
+4792  00ee ae000a        	ldw	x,#10
+4793  00f1 cd004d        	call	_delayus
+4795                     ; 108 			SCLK=0;  
+4797  00f4 7213500f      	bres	_OPD1
+4798                     ; 109 			delayus(10);
+4800  00f8 ae000a        	ldw	x,#10
+4801  00fb cd004d        	call	_delayus
+4803                     ; 110 			mask>>=1;  
+4805  00fe 0403          	srl	(OFST+0,sp)
+4806                     ; 99 		for(j=0;j<5;j++)  
+4808  0100 0c02          	inc	(OFST-1,sp)
+4811  0102 7b02          	ld	a,(OFST-1,sp)
+4812  0104 a105          	cp	a,#5
+4813  0106 25cc          	jrult	L1413
+4814                     ; 113 		mask = 0x00; 
+4816  0108 0f03          	clr	(OFST+0,sp)
+4817                     ; 114 		for(j=0;j<5;j++)  
+4819  010a 0f02          	clr	(OFST-1,sp)
+4820  010c               L3513:
+4821                     ; 116 			if(mask&Rdt)  
+4823  010c 7b03          	ld	a,(OFST+0,sp)
+4824  010e 1504          	bcp	a,(OFST+1,sp)
+4825  0110 2706          	jreq	L1613
+4826                     ; 117 				SDO = 1;   
+4828  0112 7214500f      	bset	_OPD2
+4830  0116 2004          	jra	L3613
+4831  0118               L1613:
+4832                     ; 119 				SDO = 0;  
+4834  0118 7215500f      	bres	_OPD2
+4835  011c               L3613:
+4836                     ; 120 			delayus(10);			
+4838  011c ae000a        	ldw	x,#10
+4839  011f cd004d        	call	_delayus
+4841                     ; 121 			SCLK=1;
+4843  0122 7212500f      	bset	_OPD1
+4844                     ; 122 			delayus(10);
+4846  0126 ae000a        	ldw	x,#10
+4847  0129 cd004d        	call	_delayus
+4849                     ; 123 			SCLK=0;  
+4851  012c 7213500f      	bres	_OPD1
+4852                     ; 124 			delayus(10);
+4854  0130 ae000a        	ldw	x,#10
+4855  0133 cd004d        	call	_delayus
+4857                     ; 125 			mask>>=1;  
+4859  0136 0403          	srl	(OFST+0,sp)
+4860                     ; 114 		for(j=0;j<5;j++)  
+4862  0138 0c02          	inc	(OFST-1,sp)
+4865  013a 7b02          	ld	a,(OFST-1,sp)
+4866  013c a105          	cp	a,#5
+4867  013e 25cc          	jrult	L3513
+4868                     ; 74 	for(i = 0;i < 1; i++)	
+4870  0140 0c01          	inc	(OFST-2,sp)
+4873  0142 0d01          	tnz	(OFST-2,sp)
+4874  0144 2603          	jrne	L41
+4875  0146 cc0085        	jp	L1213
+4876  0149               L41:
+4877                     ; 128 	SDO=0; 
+4879  0149 7215500f      	bres	_OPD2
+4880                     ; 133 	for(i = 0;i < 1; i++)
+4882  014d 0f01          	clr	(OFST-2,sp)
+4883  014f               L5613:
+4884                     ; 135 		SCLK = 1;
+4886  014f 7212500f      	bset	_OPD1
+4887                     ; 136 		delayus(10);
+4889  0153 ae000a        	ldw	x,#10
+4890  0156 cd004d        	call	_delayus
+4892                     ; 137 		SCLK = 0;
+4894  0159 7213500f      	bres	_OPD1
+4895                     ; 138 		delayus(10);
+4897  015d ae000a        	ldw	x,#10
+4898  0160 cd004d        	call	_delayus
+4900                     ; 133 	for(i = 0;i < 1; i++)
+4902  0163 0c01          	inc	(OFST-2,sp)
+4905  0165 0d01          	tnz	(OFST-2,sp)
+4906  0167 27e6          	jreq	L5613
+4907                     ; 140 	delayms(500);
+4909  0169 ae01f4        	ldw	x,#500
+4910  016c cd0026        	call	_delayms
+4912                     ; 142 }
+4915  016f 5b05          	addw	sp,#5
+4916  0171 81            	ret
+4929                     	xdef	_delayms
+4930                     	xdef	_main
+4931                     	xdef	_delayus
+4932                     	xdef	_LED_SendData
+4951                     	end

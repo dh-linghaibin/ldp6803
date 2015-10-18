@@ -1,5 +1,5 @@
 
-Map of Debug\ldp6800.sm8 from link file Debug\ldp6800.lkf - Sun Oct 18 15:04:54 2015
+Map of Debug\ldp6800.sm8 from link file Debug\ldp6800.lkf - Sun Oct 18 15:09:29 2015
 
 
                                --------
@@ -7,7 +7,7 @@ Map of Debug\ldp6800.sm8 from link file Debug\ldp6800.lkf - Sun Oct 18 15:04:54 
                                --------
 
 start 00008080 end 00008080 length     0 segment .const
-start 00008083 end 00008247 length   452 segment .text
+start 00008083 end 00008241 length   446 segment .text
 start 00004000 end 00004000 length     0 segment .eeprom
 start 00000000 end 00000000 length     0 segment .bsct
 start 00000000 end 00000006 length     6 segment .ubsct
@@ -30,7 +30,7 @@ start 00000100 end 00000100 length     0 section .bss
 start 00000000 end 00000000 length     0 section .ubsct
 
 Debug\main.o:
-start 000080ce end 00008246 length   376 section .text
+start 000080ce end 00008240 length   370 section .text
 start 00000000 end 00003009 length 12297 section .debug
 
 (C:\CXSTM8\Lib\libm0.sm8)xreg.o:
@@ -40,7 +40,7 @@ start 00000000 end 00000003 length     3 section .ubsct
 start 00000003 end 00000006 length     3 section .ubsct
 
 Debug\stm8_interrupt_vector.o:
-start 00008246 end 00008247 length     1 section .text
+start 00008240 end 00008241 length     1 section .text
 start 00003009 end 00003174 length   363 section .debug
 start 00008000 end 00008080 length   128 section .const
 
@@ -489,4 +489,4 @@ c_x                     00000000   defined in (C:\CXSTM8\Lib\libm0.sm8)xreg.o se
                                    used in C:\CXSTM8\Lib\crtsi0.sm8
 c_y                     00000003   defined in (C:\CXSTM8\Lib\libm0.sm8)yreg.o section .ubsct
                                    used in C:\CXSTM8\Lib\crtsi0.sm8
-f_NonHandledInterrupt   00008246   defined in Debug\stm8_interrupt_vector.o section .text
+f_NonHandledInterrupt   00008240   defined in Debug\stm8_interrupt_vector.o section .text

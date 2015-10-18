@@ -80,7 +80,7 @@ LED_SendData(u8 Rdt, u8 Gdt, u8 Bdt)
 		delayus(10);
 		//送起始位'1'  
 		//输出5位红色  
-		mask = 0x10; 
+		mask = 0x00; 
 		for(j=0;j<5;j++)  
 		{ 
 			if(mask&Rdt)  
@@ -95,7 +95,7 @@ LED_SendData(u8 Rdt, u8 Gdt, u8 Bdt)
 			mask>>=1;  
 		} 
 		//输出5位绿色  
-		mask = 0x10; 
+		mask = 0x00; 
 		for(j=0;j<5;j++)  
 		{ 
 			if(mask&Rdt)  
@@ -110,7 +110,7 @@ LED_SendData(u8 Rdt, u8 Gdt, u8 Bdt)
 			mask>>=1;  
 		} 
 		//输出5位蓝色  
-		mask = 0x10; 
+		mask = 0x00; 
 		for(j=0;j<5;j++)  
 		{ 
 			if(mask&Rdt)  
