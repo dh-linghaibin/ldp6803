@@ -1,0 +1,12 @@
+;	STMicroelectronics Workspace file
+
+[Version]
+Keyword=ST7Workspace-V0.7
+
+[Project0]
+Filename=ldp6800.stp
+Dependencies=
+[Options]
+ActiveProject=ldp6800
+ActiveConfig=Debug
+AddSortedElements=1
