@@ -1,5 +1,5 @@
 
-Map of Debug\ldp6800.sm8 from link file Debug\ldp6800.lkf - Sun Oct 18 13:58:21 2015
+Map of Debug\ldp6800.sm8 from link file Debug\ldp6800.lkf - Sun Oct 18 15:04:54 2015
 
 
                                --------
@@ -7,7 +7,7 @@ Map of Debug\ldp6800.sm8 from link file Debug\ldp6800.lkf - Sun Oct 18 13:58:21 
                                --------
 
 start 00008080 end 00008080 length     0 segment .const
-start 00008083 end 0000818c length   265 segment .text
+start 00008083 end 00008247 length   452 segment .text
 start 00004000 end 00004000 length     0 segment .eeprom
 start 00000000 end 00000000 length     0 segment .bsct
 start 00000000 end 00000006 length     6 segment .ubsct
@@ -15,7 +15,7 @@ start 00000006 end 00000006 length     0 segment .bit
 start 00000006 end 00000006 length     0 segment .share
 start 00000100 end 00000100 length     0 segment .data
 start 00000100 end 00000100 length     0 segment .bss
-start 00000000 end 000030cc length 12492 segment .debug
+start 00000000 end 00003174 length 12660 segment .debug
 start 00008000 end 00008080 length   128 segment .const
 start 00008080 end 00008083 length     3 segment .init
 
@@ -30,8 +30,8 @@ start 00000100 end 00000100 length     0 section .bss
 start 00000000 end 00000000 length     0 section .ubsct
 
 Debug\main.o:
-start 000080ce end 0000818b length   189 section .text
-start 00000000 end 00002f61 length 12129 section .debug
+start 000080ce end 00008246 length   376 section .text
+start 00000000 end 00003009 length 12297 section .debug
 
 (C:\CXSTM8\Lib\libm0.sm8)xreg.o:
 start 00000000 end 00000003 length     3 section .ubsct
@@ -40,8 +40,8 @@ start 00000000 end 00000003 length     3 section .ubsct
 start 00000003 end 00000006 length     3 section .ubsct
 
 Debug\stm8_interrupt_vector.o:
-start 0000818b end 0000818c length     1 section .text
-start 00002f61 end 000030cc length   363 section .debug
+start 00008246 end 00008247 length     1 section .text
+start 00003009 end 00003174 length   363 section .debug
 start 00008000 end 00008080 length   128 section .const
 
 
@@ -50,25 +50,35 @@ start 00008000 end 00008080 length   128 section .const
                              -----------
 
 Debug\main.o:
-_LED_SendData          >    7   (7)
-_main                  >    2   (2)
+_LED_SendData              14   (8)
+_delayms                    6   (6)
+_delayus                    2   (2)
+_main                  >   16   (2)
 
 Debug\stm8_interrupt_vector.o:
 f_NonHandledInterrupt  >    5   (5)
 
-Stack size: 12
+Stack size: 21
 
 
                               ---------
                               Call tree
                               ---------
-   1 > _LED_SendData: (7)
+   1 > __stext: (0)
 
-   2 > __stext: (0)
+   2 > _main: (2)
+   3      + _LED_SendData: (8)
+   4      |    + _delayms: (6)
+   5      |    + _delayus: (2)
+          | 
+       
+   6 > f_NonHandledInterrupt: (5)
 
-   3 > _main: (2)
+   7   _LED_SendData --> 3
 
-   4 > f_NonHandledInterrupt: (5)
+   8   _delayms --> 4
+
+   9   _delayus --> 5
 
 
 
@@ -212,7 +222,7 @@ _ITC_SPR7               00007f76   defined in Debug\main.o
 _IWDG_KR                000050e0   defined in Debug\main.o
 _IWDG_PR                000050e1   defined in Debug\main.o
 _IWDG_RLR               000050e2   defined in Debug\main.o
-_LED_SendData           000080ec   defined in Debug\main.o section .text
+_LED_SendData           0000811c   defined in Debug\main.o section .text
 _OPA0                   005000:0   defined in Debug\main.o
 _OPA1                   005000:1   defined in Debug\main.o
 _OPA2                   005000:2   defined in Debug\main.o
@@ -470,6 +480,8 @@ __startmem              00000100   defined in command file section .bss
 __stext                 00008083   defined in C:\CXSTM8\Lib\crtsi0.sm8 section .text
                                    used in Debug\stm8_interrupt_vector.o
 __vectab                00008000   defined in Debug\stm8_interrupt_vector.o section .const
+_delayms                000080f4   defined in Debug\main.o section .text
+_delayus                0000811b   defined in Debug\main.o section .text
 _exit                   000080cc   defined in C:\CXSTM8\Lib\crtsi0.sm8 section .text
 _main                   000080ce   defined in Debug\main.o section .text
                                    used in C:\CXSTM8\Lib\crtsi0.sm8
@@ -477,4 +489,4 @@ c_x                     00000000   defined in (C:\CXSTM8\Lib\libm0.sm8)xreg.o se
                                    used in C:\CXSTM8\Lib\crtsi0.sm8
 c_y                     00000003   defined in (C:\CXSTM8\Lib\libm0.sm8)yreg.o section .ubsct
                                    used in C:\CXSTM8\Lib\crtsi0.sm8
-f_NonHandledInterrupt   0000818b   defined in Debug\stm8_interrupt_vector.o section .text
+f_NonHandledInterrupt   00008246   defined in Debug\stm8_interrupt_vector.o section .text

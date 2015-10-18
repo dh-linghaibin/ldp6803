@@ -16,5 +16,8 @@ typedef signed long    s32;
 #define WDT()	IWDG_KR = 0xAA
 
 //离散IO定义
-#define SCLK OPC3 //指示LED
-#define SDO OPD4
+#define SCLK OPD1 //指示LED
+#define SDO OPD2
+
+LED_SendData(u8 Rdt, u8 Gdt, u8 Bdt) ;
+void delayus(u16 us);
